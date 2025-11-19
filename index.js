@@ -7,6 +7,7 @@ app.use(express.json());
 const PORT = 3000;
 
 // 👇 Replace with your actual Chrome path
+// const chromePath = "/usr/bin/google-chrome";
 
 app.get("/", (req, res) => {
   res.send("Hello World <a href='/auto-login'>Get Logged In</a>");
@@ -43,6 +44,7 @@ app.get("/auto-login", async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
+      executablePath: puppeteer.executablePath(),
       headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
@@ -232,7 +234,8 @@ app.get("/auto-login", async (req, res) => {
 app.get("/get-receipt", async (req, res) => {
   try {
     const browser = await puppeteer.launch({
-      headless: false, // Show browser for debug
+      executablePath: puppeteer.executablePath(),
+      headless: true, // Show browser for debug
       // executablePath,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
