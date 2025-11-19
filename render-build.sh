@@ -4,5 +4,9 @@ set -e
 echo "Installing dependencies..."
 npm install
 
-echo "Forcing Puppeteer to download Chromium..."
-PUPPETEER_CACHE_DIR=./.cache/puppeteer node node_modules/puppeteer/install.mjs
+echo "Preparing Puppeteer cache directory..."
+mkdir -p /opt/render/project/src/.cache/puppeteer
+
+echo "Downloading Chromium..."
+PUPPETEER_CACHE_DIR="/opt/render/project/src/.cache/puppeteer" \
+node node_modules/puppeteer/install.mjs
