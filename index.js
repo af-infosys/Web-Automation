@@ -223,7 +223,7 @@ app.get("/auto-login", async (req, res) => {
       return res.status(400).json({ error: "Login failed." });
     }
   } catch (err) {
-    console.error("❌ Automation failed:", err);
+    console.log("❌ Automation failed:", err);
     return res.status(500).json({ error: "Internal error." });
   }
 });
@@ -263,7 +263,7 @@ app.get("/get-receipt", async (req, res) => {
       milkat_id
     );
   } catch (err) {
-    console.error("❌ Automation failed:", err);
+    console.log("❌ Automation failed:", err);
     return res.status(500).json({ error: "Internal error." });
   }
 });
