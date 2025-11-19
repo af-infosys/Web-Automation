@@ -1,6 +1,6 @@
 const express = require("express");
-const puppeteer = require("puppeteer-core");
-// const puppeteer = require("puppeteer");
+// const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const app = express();
 app.use(express.json());
 
@@ -233,7 +233,7 @@ app.get("/get-receipt", async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       headless: false, // Show browser for debug
-      executablePath,
+      // executablePath,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
 
