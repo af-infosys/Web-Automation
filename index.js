@@ -1,13 +1,12 @@
 const express = require("express");
-// const puppeteer = require("puppeteer-core");
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
+// const puppeteer = require("puppeteer");
 const app = express();
 app.use(express.json());
 
 const PORT = 3000;
 
 // 👇 Replace with your actual Chrome path
-const executablePath = "/usr/bin/google-chrome"; // or Windows/macOS path
 
 app.get("/", (req, res) => {
   res.send("Hello World <a href='/auto-login'>Get Logged In</a>");
@@ -44,8 +43,7 @@ app.get("/auto-login", async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
-      headless: false, // Show browser for debug
-      executablePath,
+      headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
 
