@@ -59,7 +59,7 @@ app.get("/auto-login", async (req, res) => {
         process.env.PRODUCTION == "true"
           ? puppeteer.executablePath()
           : executablePath,
-      headless: false,
+      headless: process.env.PRODUCTION == "true" ? true : false,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
 
@@ -256,7 +256,7 @@ app.get("/get-receipt", async (req, res) => {
         process.env.PRODUCTION == "true"
           ? puppeteer.executablePath()
           : executablePath,
-      headless: false,
+      headless: process.env.PRODUCTION == "true" ? true : false,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
 
